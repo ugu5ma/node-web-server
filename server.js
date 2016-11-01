@@ -2,6 +2,11 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//heroku: get port to run the web-server.
+//If the env is not available use Port 3000
+const port = process.env.PORT || 3000;
+
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -63,6 +68,6 @@ app.get('/bad', (req, res) =>{
 });
 
 
-app.listen(3000, () => {
-  console.log('Server up and Running on port 3k');
+app.listen(port, () => {
+  console.log(`Server up and Running on port ${port}`);
 });
